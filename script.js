@@ -22,6 +22,8 @@ $(document).ready(function(e){
         }
     }
     $('form').on('submit',function(e){
+        allHeroList.innerHTML='';
+        console.log('hit');
         e.preventDefault();
         let searchHero=$('#nameStartsWith').val();
         //console.log(searchHero);
