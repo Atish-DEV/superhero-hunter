@@ -1,5 +1,10 @@
 $(document).ready(function(){
     let getFavList=localStorage.getItem('favHero');
+    let closeBtn=document.querySelector('#closeBtn');
+    let modal=document.querySelector('#modal');
+    let nameContent=document.querySelector('#name-content');
+    let imageContent=document.querySelector('.img-container>img');
+    let descContent=document.querySelector('#desc-content');
   let favHerosDetails=[];
     let favListArr=JSON.parse(getFavList);
     let allHeroList=document.querySelector('#container');
@@ -18,6 +23,7 @@ $(document).ready(function(){
          let singleHeroDesc=document.createElement('h3');
          singleHeroDesc.innerHTML=description;
         let actionBtnFav=document.createElement('button');
+        actionBtnFav.innerHTML='Remove from Favorite';
         actionBtnFav.addEventListener('click',function(e){
           let parentElem=e.target.parentElement;
           //console.log(favListArr);
@@ -30,8 +36,27 @@ $(document).ready(function(){
           }        
         });
         let actionBtnShowDetails=document.createElement('button');
-        actionBtnFav.innerHTML='Remove from Favorite';
          actionBtnShowDetails.innerHTML='Show Details';
+         actionBtnShowDetails.onclick=function(e){
+          //console.log('click');
+          nameContent.innerHTML=name;
+          imageContent.setAttribute('src',img);
+          if(description.length>0){
+              descContent.innerHTML=description;
+          }
+          else{
+              descContent.innerHTML=' Not much information is available for this Character...But you can explore ..';
+          }
+          modal.style.display='block';
+      }
+      closeBtn.addEventListener('click',function(){
+        modal.style.display='none';
+    });
+    window.onclick=function(e){
+        if(e.target==modal){
+            modal.style.display='none';
+        }
+    }
         singleHeroDetails.append(singleHeroImg);
         singleHeroDetails.append(singleHeroName);
         singleHeroDetails.append(singleHeroDesc);

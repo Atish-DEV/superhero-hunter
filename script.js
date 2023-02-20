@@ -1,6 +1,12 @@
 $(document).ready(function(e){
     let allHeroList=document.querySelector('#container');
     let getFavList=localStorage.getItem('favHero');
+   // let btn=document.querySelector('.myBtn');
+    let closeBtn=document.querySelector('#closeBtn');
+    let modal=document.querySelector('#modal');
+    let nameContent=document.querySelector('#name-content');
+    let imageContent=document.querySelector('.img-container>img');
+    let descContent=document.querySelector('#desc-content');
    let favHeros=[];
    let favListArr=JSON.parse(getFavList);
    favHeros=favHeros.concat(favListArr);
@@ -60,6 +66,26 @@ $(document).ready(function(e){
           });
           let actionBtnShowDetails=document.createElement('button');
             actionBtnShowDetails.innerHTML='Show Details';
+            actionBtnShowDetails.onclick=function(e){
+                //console.log('click');
+                nameContent.innerHTML=name;
+                imageContent.setAttribute('src',img);
+                if(description.length>0){
+                    descContent.innerHTML=description;
+                }
+                else{
+                    descContent.innerHTML=' Not much information is available for this Character...But you can explore ..';
+                }
+                modal.style.display='block';
+            }
+            closeBtn.addEventListener('click',function(){
+                modal.style.display='none';
+            });
+            window.onclick=function(e){
+                if(e.target==modal){
+                    modal.style.display='none';
+                }
+            }
            singleHeroDetails.append(singleHeroImg);
            singleHeroDetails.append(singleHeroName);
           singleHeroDetails.append(actionBtnFav);

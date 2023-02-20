@@ -4,20 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Draft 1</title>
+    <title>Document</title>
     <style>
-        #container{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .singleHero{
-            width:400px;
-            height:auto;
-        }
-        .singleHero>img{
-            width:400px;
-            height:auto;
-        }
         *{
             padding: 0;
             margin: 0;
@@ -31,7 +19,7 @@
             top:0;
             left:0;
             background-color: rgb(0,0,0);
-            background-color: rgba(0, 0, 0, 0.89);
+            background-color: rgba(0,0,0,0.4);
         }
         .modal-content{
             background-color: #fefefe;
@@ -91,21 +79,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <form>
-            <input type="text" name="nameStartsWith" id="nameStartsWith">
-        </form>
-        <a href="./favHeros.html">Show Favorite</a>
-    </header>
-    <main>
-        <div id="container">
-            <!-- <div id="singleHeroDetails">
-                <img src="">
-                <h2 id="name">Spider Man</h2>
-                <h3 id="details">xxx</h3>
-            </div> -->
-        </div>
-    </main>
+    <button class="myBtn">Add details</button>
     <div id="modal" class="modal">
         <div id="modal-content" class="modal-content">
            <div class="modal-header">
@@ -127,8 +101,27 @@
            <button id="closeBtn" class="close-btn">&times;</button>
         </div>
     </div>
-  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
-  
+<script>
+    let btn=document.querySelector('.myBtn');
+    let closeBtn=document.querySelector('#closeBtn');
+    let modal=document.querySelector('#modal');
+    let nameContent=document.querySelector('#name-content');
+    let imageContent=document.querySelector('.img-container>img');
+    let descContent=document.querySelector('#desc-content');
+    btn.addEventListener('click',function(){
+        nameContent.innerHTML='Hulk';
+        imageContent.setAttribute('src','http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0.jpg');
+        descContent.innerHTML='Caught in a gamma bomb explosion while trying to save the life of a teenager, Dr. Bruce Banner was transformed into the incredibly powerful creature called the Hulk. An all too often misunderstood hero, the angrier the Hulk gets, the stronger the Hulk gets.';
+        modal.style.display='block';
+    });
+    closeBtn.addEventListener('click',function(){
+        modal.style.display='none';
+    });
+    window.onclick=function(e){
+        if(e.target==modal){
+            modal.style.display='none';
+        }
+    }
+</script>
 </body>
 </html>

@@ -18,11 +18,102 @@
             width:400px;
             height:auto;
         }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .modal{
+            width:100%;
+            height:100%;
+            display:none;
+            position: fixed;
+            z-index: 1;
+            top:0;
+            left:0;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0, 0, 0, 0.89);
+        }
+        .modal-content{
+            background-color: #fefefe;
+            margin: 2% auto;
+            width:50%;
+            padding: 20px;
+            border: 1px solid #888;
+            position: relative;
+            animation: animateTop 0.4s;
+            box-shadow: 0 0 10px ;
+        }
+        .modal-header>h2{
+            text-align: center;
+        }
+        .modal-body{
+            display: flex;
+            flex-direction: column;
+        }
+        .img-container{
+            width:40%;
+            height:auto;
+        }
+        .img-container>img{
+            width: 100%;
+            height: auto;
+        }
+        .desc>p{
+            text-align:justify ;
+
+        }
+        .close-btn{
+            position:absolute;
+            top:-10px;
+            right:-10px;
+            font-size: 2rem;
+            padding:2px 10px;
+            background-color: silver;
+            border: 2px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px ;
+        }
+        .close-btn>*{
+            width:100%;
+            height: 100%;
+        }
+        @keyframes animateTop {
+            from{
+                top:-300px;
+                opacity: 0;
+            }
+            to{
+                top:0;
+                opacity: 1;
+            }
+            
+        }
     </style>
 </head>
 <body>
  <h2>Fav Heros</h2> 
   <div id='container'></div>
+  <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content">
+           <div class="modal-header">
+            <h2 id="name-content">Hero Name</h2>
+           </div>
+           <div class="modal-body">
+            <div class="img-container">
+            <img src="" alt="hero-image">
+            </div>
+            <div class="desc">
+                <h3>
+                    Description
+                </h3>
+                <hr/>
+                <p id="desc-content">
+                </p>
+            </div>
+           </div>
+           <button id="closeBtn" class="close-btn">&times;</button>
+        </div>
+    </div>
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
   <script src='./favheros.js'>
   </script>
