@@ -1,9 +1,16 @@
 $(document).ready(function(e){
     let allHeroList=document.querySelector('#container');
+    let getFavList=localStorage.getItem('favHero');
+   let favHeros=[];
+   let favListArr=JSON.parse(getFavList);
+   favHeros=favHeros.concat(favListArr);
+   console.log(favHeros);
+   console.log(favListArr);
     function display(data){
         let superHeroList=data.data.results;
-        for(item of superHeroList){
+        for(let item of superHeroList){
            // console.log(item.name);
+          // console.log(item);
            let img=item.thumbnail.path+'.'+item.thumbnail.extension;
            let name=item.name;
            let description=item.description;
@@ -13,11 +20,50 @@ $(document).ready(function(e){
            singleHeroImg.setAttribute('src',img);
            let singleHeroName=document.createElement('h2');
            singleHeroName.innerHTML=name;
-           let singleHeroDesc=document.createElement('h3');
-           singleHeroDesc.innerHTML=description;
+          let actionBtnFav=document.createElement('button');
+          if(favListArr){
+            if(favListArr.indexOf(item.id)>-1){
+                actionBtnFav.innerHTML='Remove from Favorite';
+            }
+            else{
+                actionBtnFav.innerHTML='Add to Favorite';
+            }
+        }
+          else{
+            actionBtnFav.innerHTML='Add to Favorite';
+          }
+          actionBtnFav.addEventListener('click',function(e){
+            if(e.target.innerHTML=='Add to Favorite'){
+             favHeros.push(item.id);
+             console.log(favHeros);
+             //update localstorage
+             //if localstorage key is not present create a new key
+             if(!getFavList){
+                localStorage.setItem("favHero", JSON.stringify(favHeros));
+             }
+             //if localstorage key is present updat the key
+             else{
+                localStorage.removeItem('favHero');
+                localStorage.setItem("favHero", JSON.stringify(favHeros));
+             }
+             e.target.innerHTML='Remove from Favorite';
+            }else{
+                const index=favHeros.indexOf(item.id);
+                if(index>-1){
+                    favHeros.splice(index,1);
+                    console.log(favHeros);
+                    localStorage.removeItem('favHero');
+                    localStorage.setItem("favHero", JSON.stringify(favHeros));
+                }
+                e.target.innerHTML='Add to Favorite';
+            }
+          });
+          let actionBtnShowDetails=document.createElement('button');
+            actionBtnShowDetails.innerHTML='Show Details';
            singleHeroDetails.append(singleHeroImg);
            singleHeroDetails.append(singleHeroName);
-           singleHeroDetails.append(singleHeroDesc);
+          singleHeroDetails.append(actionBtnFav);
+           singleHeroDetails.append(actionBtnShowDetails);
            allHeroList.append(singleHeroDetails);
         }
     }
