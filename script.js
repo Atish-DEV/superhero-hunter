@@ -110,15 +110,25 @@ $(document).ready(function(e){
         }
     }
     $('form').on('submit',function(e){
+        $('.loader').css('display','flex');
         allHeroList.innerHTML='';
         console.log('hit');
         e.preventDefault();
         let searchHero=$('#nameStartsWith').val();
         //console.log(searchHero);
         let url=`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=8199d7f9453bbe2730f2401786e12ba6&hash=0333d0c98ba986f005fd7a580173db88&nameStartsWith=${searchHero}`;
-        $.get(url,function(data){
-            //console.log(data);
-            display(data);
+        $.ajax({
+            url:url,
+            method:'GET',
+            success:function(data){
+                display(data);
+                $('.loader').css('display','none');
+            }
         });
+        // $.get(url,function(data){
+        //     //console.log(data);
+        //     display(data);
+        // });
+
     });
 })
