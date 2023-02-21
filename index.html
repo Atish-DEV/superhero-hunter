@@ -5,22 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperHero Hunter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
-        <form>
+    <header class="container-fluid p-3 fixed-top border-bottom">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-3 text-center" >
+                    <a href="#" class="app-logo text-decoration-none">
+                        <h5 class="bg-danger p-2"> 
+                            SuperHero Hunter App
+                        </h5> 
+                    </a>
+                </div>
+                    <form class="col-md-5">
+                        <input type="text" class="p-1 px-3" style="width:100%;" name="nameStartsWith" id="nameStartsWith">
+                    </form>
+                <div class="col-md-3 text-center mt-3 my-md-0">
+                    <a href="./favHeros.html" class="fav-btn bg-danger p-2 text-decoration-none">My Favorite</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container-fluid">
+        <div id="container" style=" height:500px;" class="hero-container container p-2  overflow-scroll">
+         <!-- <div id="singleHeroDetails">
+                <img src="">
+                <h2 id="name">Spider Man</h2>
+                <h3 id="details">xxx</h3>
+            </div> -->
+        </div> 
+    </main>
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content">
+           <div class="modal-header">
+            <h2 id="name-content">Hero Name</h2>
+           </div>
+           <div class="modal-body">
+            <div class="img-container">
+            <img src="" alt="hero-image">
+            </div>
+            <div class="desc">
+                <h3>
+                    Description
+                </h3>
+                <hr/>
+                <p id="desc-content">
+                </p>
+            </div>
+           </div>
+           <button id="closeBtn" class="close-btn">&times;</button>
+        </div>
+    </div> 
+
+
+
+
+
+
+
+
+
+
+        <!-- <form>
             <input type="text" name="nameStartsWith" id="nameStartsWith">
         </form>
         <a href="./favHeros.html">Show Favorite</a>
     </header>
     <main>
         <div id="container">
-            <!-- <div id="singleHeroDetails">
+         <div id="singleHeroDetails">
                 <img src="">
                 <h2 id="name">Spider Man</h2>
                 <h3 id="details">xxx</h3>
-            </div> -->
+            </div> 
         </div>
     </main>
     <div id="modal" class="modal">
@@ -43,7 +106,7 @@
            </div>
            <button id="closeBtn" class="close-btn">&times;</button>
         </div>
-    </div>
+    </div> -->
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
   <script src="script.js"></script>
   
