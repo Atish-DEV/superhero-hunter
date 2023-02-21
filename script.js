@@ -111,18 +111,30 @@ $(document).ready(function(e){
     }
     $('form').on('submit',function(e){
         $('.loader').css('display','flex');
+        $('.instruction').css('display','none');
         allHeroList.innerHTML='';
         console.log('hit');
         e.preventDefault();
-        let searchHero=$('#nameStartsWith').val();
+        let searchHero=$('#nameStartsWith').val().trim();
+        if(searchHero.length==0){
+            alert('Enter a valid name');
+            location.reload();
+        }
         //console.log(searchHero);
         let url=`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=8199d7f9453bbe2730f2401786e12ba6&hash=0333d0c98ba986f005fd7a580173db88&nameStartsWith=${searchHero}`;
         $.ajax({
             url:url,
             method:'GET',
             success:function(data){
+                console.log(data.data.results.length);
+                if(data.data.results.length>0){
                 display(data);
                 $('.loader').css('display','none');
+                }
+                else{
+                    alert('Not found');
+                    location.reload();
+                }
             }
         });
         // $.get(url,function(data){
