@@ -21,18 +21,29 @@ $(document).ready(function(e){
            let name=item.name;
            let description=item.description;
            let singleHeroDetails=document.createElement('div');
+           let heroImgNameDiv=document.createElement('div');
+           singleHeroDetails.classList.add('col-md-3');
+           singleHeroDetails.classList.add('p-2');
            singleHeroDetails.classList.add('singleHero');
            let singleHeroImg=document.createElement('img');
            singleHeroImg.setAttribute('src',img);
+           singleHeroImg.classList.add('img-fluid');
            let singleHeroName=document.createElement('h2');
            singleHeroName.innerHTML=name;
+           heroImgNameDiv.append(singleHeroImg);
+           heroImgNameDiv.append(singleHeroName);
+           singleHeroDetails.append(heroImgNameDiv);
+           let btnDiv=document.createElement('div');
+           btnDiv.classList.add('actionBtn');
           let actionBtnFav=document.createElement('button');
           if(favListArr){
             if(favListArr.indexOf(item.id)>-1){
                 actionBtnFav.innerHTML='Remove from Favorite';
+                actionBtnFav.style.backgroundColor='rgba(73, 247, 73, 0.979)';
             }
             else{
                 actionBtnFav.innerHTML='Add to Favorite';
+                actionBtnFav.style.backgroundColor='orange';
             }
         }
           else{
@@ -52,6 +63,7 @@ $(document).ready(function(e){
                 localStorage.removeItem('favHero');
                 localStorage.setItem("favHero", JSON.stringify(favHeros));
              }
+             e.target.style.backgroundColor='rgba(73, 247, 73, 0.979)';
              e.target.innerHTML='Remove from Favorite';
             }else{
                 const index=favHeros.indexOf(item.id);
@@ -61,6 +73,7 @@ $(document).ready(function(e){
                     localStorage.removeItem('favHero');
                     localStorage.setItem("favHero", JSON.stringify(favHeros));
                 }
+                e.target.style.backgroundColor='orange';
                 e.target.innerHTML='Add to Favorite';
             }
           });
@@ -86,10 +99,13 @@ $(document).ready(function(e){
                     modal.style.display='none';
                 }
             }
-           singleHeroDetails.append(singleHeroImg);
-           singleHeroDetails.append(singleHeroName);
-          singleHeroDetails.append(actionBtnFav);
-           singleHeroDetails.append(actionBtnShowDetails);
+        //    singleHeroDetails.append(singleHeroImg);
+        //    singleHeroDetails.append(singleHeroName);
+        btnDiv.append(actionBtnFav);
+        btnDiv.append(actionBtnShowDetails);
+        //   singleHeroDetails.append(actionBtnFav);
+        //    singleHeroDetails.append(actionBtnShowDetails);
+        singleHeroDetails.append(btnDiv);
            allHeroList.append(singleHeroDetails);
         }
     }

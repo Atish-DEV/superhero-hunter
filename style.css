@@ -3,28 +3,56 @@
 }
 form>input[type=text]{
     border-radius: 16px;
-    outline: none;
     border: 1px solid black;
+    outline: none;
+    
 }
 .fav-btn{
     color:white;
 }
-main{
-    width: 100%;
-    height: 100%;
-    padding-top: 10%;
+main>div{
+    margin: 10% auto;
 }
 #container{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+#container::-webkit-scrollbar{
+    display: none;
+}
+.loader{
+    width:200px;
+    height:200px;
+    border:1px double rgb(133, 105, 105);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.loader-container>img{
+    width: 100%;
+    height: auto;
 }
 .singleHero{
-    width:400px;
-    height:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.205);
 }
-.singleHero>img{
-    width:400px;
-    height:auto;
+.actionBtn{
+    display: flex;
+   justify-content:end ;
+}
+.actionBtn>button{
+    padding: 3px;
+    font-size: small;
+    margin-right: 5px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+    transition: all 0.5s;
 }
 *{
     padding: 0;
@@ -35,11 +63,12 @@ main{
     height:100%;
     display:none;
     position: fixed;
-    z-index: 1;
+    z-index: 10000000;
     top:0;
     left:0;
     background-color: rgb(0,0,0);
     background-color: rgba(0, 0, 0, 0.89);
+    overflow: hidden;
 }
 .modal-content{
     background-color: #fefefe;
@@ -50,6 +79,7 @@ main{
     position: relative;
     animation: animateTop 0.4s;
     box-shadow: 0 0 10px ;
+
 }
 .modal-header>h2{
     text-align: center;
