@@ -43,13 +43,9 @@ main>div{
 .singleHero{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-evenly;
     border: 1px solid rgba(0, 0, 0, 0.205);
     height: 450px;
-}
-.singleHero .imgDiv .img{
-    height: 300px !important;
-    width: auto !important;
 }
 .actionBtn{
     display: flex;

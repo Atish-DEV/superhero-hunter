@@ -80,16 +80,18 @@ $(document).ready(function(){
         allHeroList.append(singleHeroDetails);
       }
     }
-  for(let item of favListArr){
-    if(item){
-    let url='https://gateway.marvel.com/v1/public/characters/'+item+'?ts=1&apikey=8199d7f9453bbe2730f2401786e12ba6&hash=0333d0c98ba986f005fd7a580173db88';
-    $.get(url,function(data){
-     //console.log(data);
-      //favHerosDetails.push(data.data.results);
-       //console.log(favHerosDetails);
-      //console.log(favHerosDetails);
-      constructAppend(data);
-   });
+    if(favListArr.length>0){
+      for(let item of favListArr){
+        if(item){
+        let url='https://gateway.marvel.com/v1/public/characters/'+item+'?ts=1&apikey=8199d7f9453bbe2730f2401786e12ba6&hash=0333d0c98ba986f005fd7a580173db88';
+        $.get(url,function(data){
+         //console.log(data);
+          //favHerosDetails.push(data.data.results);
+           //console.log(favHerosDetails);
+          //console.log(favHerosDetails);
+          constructAppend(data);
+       });
+        }
+      }
     }
-  }
   });
