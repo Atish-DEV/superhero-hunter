@@ -5,9 +5,9 @@ $(document).ready(function(){
     let nameContent=document.querySelector('#name-content');
     let imageContent=document.querySelector('.img-container>img');
     let descContent=document.querySelector('#desc-content');
-  let favHerosDetails=[];
+  //let favHerosDetails=[];
     let favListArr=JSON.parse(getFavList);
-    let allHeroList=document.querySelector('#container');
+    let allHeroList=document.querySelector('#container>.row');
     function constructAppend(data){
       let superHeroList=data.data.results;
       for(let item of superHeroList){
@@ -15,17 +15,29 @@ $(document).ready(function(){
         let name=item.name;
         let description=item.description;
          let singleHeroDetails=document.createElement('div');
+         let heroImgNameDiv=document.createElement('div');
+         singleHeroDetails.classList.add('col-md-3');
          singleHeroDetails.classList.add('singleHero');
+         singleHeroDetails.classList.add('col-md-3');
+           singleHeroDetails.classList.add('p-2');
+           singleHeroDetails.classList.add('singleHero');
          let singleHeroImg=document.createElement('img');
          singleHeroImg.setAttribute('src',img);
+         singleHeroImg.classList.add('img-fluid');
          let singleHeroName=document.createElement('h2');
          singleHeroName.innerHTML=name;
-         let singleHeroDesc=document.createElement('h3');
-         singleHeroDesc.innerHTML=description;
+         heroImgNameDiv.append(singleHeroImg);
+         heroImgNameDiv.append(singleHeroName);
+         singleHeroDetails.append(heroImgNameDiv);
+        //  let singleHeroDesc=document.createElement('h3');
+        //  singleHeroDesc.innerHTML=description;
+        let btnDiv=document.createElement('div');
+        btnDiv.classList.add('actionBtn');
         let actionBtnFav=document.createElement('button');
         actionBtnFav.innerHTML='Remove from Favorite';
+        actionBtnFav.style.backgroundColor='rgba(73, 247, 73, 0.979)';
         actionBtnFav.addEventListener('click',function(e){
-          let parentElem=e.target.parentElement;
+          let parentElem=e.target.parentElement.parentElement;
           //console.log(favListArr);
           const index=favListArr.indexOf(item.id);
           if(index>-1){
@@ -57,11 +69,14 @@ $(document).ready(function(){
             modal.style.display='none';
         }
     }
-        singleHeroDetails.append(singleHeroImg);
-        singleHeroDetails.append(singleHeroName);
-        singleHeroDetails.append(singleHeroDesc);
-        singleHeroDetails.append(actionBtnFav);
-        singleHeroDetails.append(actionBtnShowDetails);
+        //singleHeroDetails.append(singleHeroImg);
+        //singleHeroDetails.append(singleHeroName);
+        //singleHeroDetails.append(singleHeroDesc);
+        btnDiv.append(actionBtnFav);
+        btnDiv.append(actionBtnShowDetails);
+        // singleHeroDetails.append(actionBtnFav);
+        // singleHeroDetails.append(actionBtnShowDetails);
+        singleHeroDetails.append(btnDiv);
         allHeroList.append(singleHeroDetails);
       }
     }

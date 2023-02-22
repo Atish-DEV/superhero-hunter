@@ -1,5 +1,5 @@
 $(document).ready(function(e){
-    let allHeroList=document.querySelector('#container');
+    let allHeroList=document.querySelector('#container>.row');
     let getFavList=localStorage.getItem('favHero');
    // let btn=document.querySelector('.myBtn');
     let closeBtn=document.querySelector('#closeBtn');
@@ -22,13 +22,14 @@ $(document).ready(function(e){
            let description=item.description;
            let singleHeroDetails=document.createElement('div');
            let heroImgNameDiv=document.createElement('div');
+           heroImgNameDiv.classList.add('imgDiv');
            singleHeroDetails.classList.add('col-md-3');
            singleHeroDetails.classList.add('p-2');
            singleHeroDetails.classList.add('singleHero');
            let singleHeroImg=document.createElement('img');
            singleHeroImg.setAttribute('src',img);
-           singleHeroImg.classList.add('img-fluid');
-           let singleHeroName=document.createElement('h2');
+          singleHeroImg.classList.add('img-fluid');
+           let singleHeroName=document.createElement('h4');
            singleHeroName.innerHTML=name;
            heroImgNameDiv.append(singleHeroImg);
            heroImgNameDiv.append(singleHeroName);
