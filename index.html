@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./media.css">
 </head>
 <body>
+    <!-- App is divided into header,main & modal -->
+    <!-- header section contains logo,search bar and a button to favorite page -->
     <header class="container-fluid p-3 fixed-top border-bottom shadow">
         <div class="container">
             <div class="row justify-content-between align-items-center">
@@ -33,6 +35,8 @@
             </div>
         </div>
     </header>
+    <!-- main section contain a container in which all data is shown after being fetch from marvel API -->
+    <!-- main section also has a loader which execute during the data is fetchig and displayed on the page -->
     <main class="container-fluid position-fixed">
         <div class="instruction">
             <h2>Enter any charater name and press Enter</h2>
@@ -53,6 +57,7 @@
             </div>
         </div> 
     </main>
+    <!-- modal is a page is animate when user click on show-details ,its has an image ,title and Description about the SuperHero -->
     <div id="modal" class="modal">
         <div id="modal-content" class="modal-content">
            <div class="modal-header">

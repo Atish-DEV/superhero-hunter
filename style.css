@@ -1,12 +1,20 @@
+/* Common style for all elm */
+*{
+    padding: 0;
+    margin: 0;
+}
+/* style for all h5 elems which are direct desendent of <elem>.app-logo */
 .app-logo>h5{
     color:white;
 }
+/* style for input having type=text and direct children of form elem */
 form>input[type=text]{
     border-radius: 16px;
     border: 1px solid black;
     outline: none;
     
 }
+/* style for fav-button */
 .fav-btn{
     color:white;
 }
@@ -17,6 +25,7 @@ main>div{
     margin: 12% auto;
   height:80vh;
 }
+/* style for not to display scollbar even scrolling is enabled */
 #container::-webkit-scrollbar{
     display: none;
 }
@@ -26,6 +35,7 @@ main>div{
     justify-content: center;
     align-items: center;
 }
+/* style for loader */
 .loader{
     width:200px;
     height:200px;
@@ -59,10 +69,7 @@ main>div{
     border: 1px solid rgba(0, 0, 0, 0.301);
     transition: all 0.5s;
 }
-*{
-    padding: 0;
-    margin: 0;
-}
+/* style for modal & its content */
 .modal{
     width:100%;
     height:100%;
@@ -116,6 +123,7 @@ main>div{
     border-radius: 50%;
     box-shadow: 0 0 10px ;
 }
+/* keyframe for animation of modal */
 @keyframes animateTop {
     from{
         top:-300px;
